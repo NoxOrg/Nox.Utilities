@@ -26,8 +26,6 @@
         <PackageReference Include="Azure.Extensions.AspNetCore.DataProtection.Keys" Version="1.1.0" />
     </ItemGroup>
     <ItemGroup>
-      <Content Include="..\..\docs\images\nox.png">
-        <Link>nox.png</Link>
-      </Content>
-    </ItemGroup>
+    <None Include="..\..\docs\images\nox.png" Pack="true" PackagePath="" />
+  </ItemGroup>
 </Project>
