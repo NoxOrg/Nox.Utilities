@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.IO.Hashing;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -8,6 +9,7 @@ namespace Nox.Utilities.Identifier;
     //Represents a Nox unique identifier
     [StructLayout(LayoutKind.Sequential)]
     [Serializable]
+    [TypeForwardedFrom("mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
 public partial struct Nuid: IComparable, IComparable<Nuid>, IEquatable<Nuid>
 {
     internal readonly int _id = 0;
@@ -62,9 +64,9 @@ public partial struct Nuid: IComparable, IComparable<Nuid>, IEquatable<Nuid>
         return other.ToInt32() != _id ? 1 : 0;
     }
 
-    public bool Equals(Nuid other)
+    public override bool Equals([NotNullWhen(true)] object? o)
     {
-        return _id == other._id;
+        return o is Nuid other && Equals(other);
     }
 
     public override int GetHashCode()
@@ -84,5 +86,10 @@ public partial struct Nuid: IComparable, IComparable<Nuid>, IEquatable<Nuid>
         // Compare each element
 
         return rA == rB;
+    }
+
+    public bool Equals(Nuid other)
+    {
+        return _id == other._id;
     }
 }
