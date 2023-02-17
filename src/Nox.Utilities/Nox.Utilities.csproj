@@ -13,6 +13,7 @@
         <PackageTags>General utlities for the Nox platform</PackageTags>
         <PackageProjectUrl>https://github.com/NoxOrg/Nox.Utilities</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryType>git</RepositoryType>
         <PackageIcon>nox.png</PackageIcon>
         <Description>
             General Nox Utilities
