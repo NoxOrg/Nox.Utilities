@@ -1,0 +1,20 @@
+using Microsoft.Extensions.DependencyInjection;
+
+namespace Nox.Utilities.Secrets;
+
+public static class ServiceExtensions
+{
+    public static IServiceCollection AddPersistedSecretStore(this IServiceCollection services)
+    {
+        services.AddDataProtection();
+        services.AddSingleton<IPersistedSecretStore, PersistedSecretStore>();
+        return services;
+    }
+
+    public static IServiceCollection AddAzureSecretProvider(this IServiceCollection services, string vaultUrl)
+    {
+        var provider = new AzureSecretProvider(vaultUrl);
+        services.AddSingleton<ISecretProvider>(provider);
+        return services;
+    }
+}
