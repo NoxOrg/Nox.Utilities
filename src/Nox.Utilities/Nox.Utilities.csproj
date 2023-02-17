@@ -15,9 +15,7 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryType>git</RepositoryType>
         <PackageIcon>nox.png</PackageIcon>
-        <Description>
-            General Nox Utilities
-        </Description>
+        <Description>General Nox Utilities</Description>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="System.IO.Hashing" Version="7.0.0" />
@@ -27,8 +25,6 @@
         <PackageReference Include="Azure.Extensions.AspNetCore.DataProtection.Keys" Version="1.1.0" />
     </ItemGroup>
     <ItemGroup>
-        <None Include="..\..\docs\images\nox.png" Pack="true" PackagePath="">
-          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
+        <None Include="..\..\docs\images\nox.png" Pack="true" PackagePath="" />
     </ItemGroup>
 </Project>
