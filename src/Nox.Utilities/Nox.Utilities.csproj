@@ -25,4 +25,9 @@
         <PackageReference Include="Microsoft.AspNetCore.DataProtection.Abstractions" Version="7.0.2" />
         <PackageReference Include="Azure.Extensions.AspNetCore.DataProtection.Keys" Version="1.1.0" />
     </ItemGroup>
+    <ItemGroup>
+      <Content Include="..\..\docs\images\nox.png">
+        <Link>nox.png</Link>
+      </Content>
+    </ItemGroup>
 </Project>
