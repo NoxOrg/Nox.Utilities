@@ -27,6 +27,8 @@
         <PackageReference Include="Azure.Extensions.AspNetCore.DataProtection.Keys" Version="1.1.0" />
     </ItemGroup>
     <ItemGroup>
-    <None Include="..\..\docs\images\nox.png" Pack="true" PackagePath="" />
-  </ItemGroup>
+        <None Include="..\..\docs\images\nox.png" Pack="true" PackagePath="">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
 </Project>
