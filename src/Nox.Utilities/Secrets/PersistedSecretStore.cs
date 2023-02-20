@@ -19,7 +19,7 @@ public class PersistedSecretStore: IPersistedSecretStore
 
     public Task SaveAsync(string key, string secret)
     {
-        var path = WellKnownPaths.CliCachePath;
+        var path = WellKnownPaths.SecretsCachePath;
      
         Directory.CreateDirectory(path);
         
@@ -36,7 +36,7 @@ public class PersistedSecretStore: IPersistedSecretStore
 
         var keyNuid = new Nuid(key).ToHex();
         
-        var path = Path.Combine(WellKnownPaths.CliCachePath, $".{keyNuid}");
+        var path = Path.Combine(WellKnownPaths.SecretsCachePath, $".{keyNuid}");
         
         if (!File.Exists(path))
         {
