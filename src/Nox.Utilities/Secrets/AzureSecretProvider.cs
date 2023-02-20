@@ -70,9 +70,13 @@ public class AzureSecretProvider: ISecretProvider
         GetCredentialFromCacheOrBrowser()
     {
         var cacheTokenFile = WellKnownPaths.CacheTokenFile;
+        var cacheTokenFolder = Path.GetDirectoryName(cacheTokenFile);
+
+        Directory.CreateDirectory(cacheTokenFolder!);
 
         InteractiveBrowserCredential credential;
         AuthenticationRecord authRecord;
+
 
         if (cacheTokenFile == null || !File.Exists(cacheTokenFile))
         {
