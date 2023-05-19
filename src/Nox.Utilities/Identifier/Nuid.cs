@@ -44,7 +44,7 @@ public partial struct Nuid: IComparable, IComparable<Nuid>, IEquatable<Nuid>
     public static int ToInt32(string input)
     {
         var bytes = Encoding.UTF8.GetBytes(input);
-        var hash = XxHash32.Hash(bytes).Reverse().ToArray();
+        var hash = XxHash64.Hash(bytes).Reverse().ToArray();
         return BitConverter.ToInt32(hash);
     }
     
