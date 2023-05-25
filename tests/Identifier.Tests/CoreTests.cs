@@ -11,10 +11,10 @@ public class CoreTests
         var nuid = new Nuid("Hello World");
         Assert.Multiple(() =>
         {
-            Assert.That(nuid._id, Is.EqualTo(-1308813586));
-            Assert.That(nuid.ToHex(), Is.EqualTo("B1FD16EE"));
-            Assert.That(nuid.ToBase36(), Is.EqualTo("6YMVDD1"));
-            Assert.That(nuid.ToGuid(), Is.EqualTo(new Guid("00000000-0000-0000-0000-0000b1fd16ee")));
+            Assert.That(nuid._id, Is.EqualTo(421813186));
+            Assert.That(nuid.ToHex(), Is.EqualTo("19245BC2"));
+            Assert.That(nuid.ToBase36(), Is.EqualTo("Y4X4Z6"));
+            Assert.That(nuid.ToGuid(), Is.EqualTo(new Guid("00000000-0000-0000-0000-000019245bc2")));
         });
     }
 }
