@@ -1,0 +1,17 @@
+name: This is the root yaml file
+description: This file contains $ref tags
+
+simpleList:
+  - item: This is simple item 1
+  - $ref: ./simple-items.yaml
+  - item: This is simple item 4
+
+complexItem:
+  $ref: complex-item.yaml
+    
+complexList:
+  - $ref: complex-item.yaml
+    
+  - $ref: complex-item.yaml    
+
+closure: This is the end of the yaml

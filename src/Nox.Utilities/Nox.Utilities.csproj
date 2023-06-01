@@ -5,9 +5,9 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PackageId>Nox.Utilities</PackageId>
-        <AssemblyVersion>1.0.3.0</AssemblyVersion>
-        <FileVersion>1.0.3.0</FileVersion>
-        <PackageVersion>1.0.3</PackageVersion>
+        <AssemblyVersion>1.0.4.0</AssemblyVersion>
+        <FileVersion>1.0.4.0</FileVersion>
+        <PackageVersion>1.0.4</PackageVersion>
         <Authors>Andre Sharpe, Jan Schutte</Authors>
         <Company>The Nox Factory</Company>
         <Copyright>Copyright (c) Andre Sharpe 2022</Copyright>
@@ -24,6 +24,7 @@
         <PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.5.0" />
         <PackageReference Include="Microsoft.AspNetCore.DataProtection.Abstractions" Version="7.0.5" />
         <PackageReference Include="Azure.Extensions.AspNetCore.DataProtection.Keys" Version="1.2.2" />
+        <PackageReference Include="YamlDotNet" Version="12.1.0" />
     </ItemGroup>
     <ItemGroup>
         <None Include="..\..\docs\images\nox.png" Pack="true" PackagePath="" />

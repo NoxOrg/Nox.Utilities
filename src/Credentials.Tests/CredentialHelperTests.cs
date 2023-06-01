@@ -17,7 +17,7 @@ public class CredentialHelperTests
     }
 
     [Test]
-    public async Task Can_get_repo_list()
+    public async Task Can_get_azure_devops_pat()
     {
         var token = await CredentialHelper.GetAzureDevOpsAccessToken();
         Assert.That(token, Is.Not.Null);

@@ -1,0 +1,3 @@
+- child: dolor sit amet
+- child: consectetur adipiscing elit
+- $ref: grand-child.yaml
