@@ -45,7 +45,7 @@ public partial struct Nuid: IComparable, IComparable<Nuid>, IEquatable<Nuid>
     {
         var bytes = Encoding.UTF8.GetBytes(input);
         var hash = XxHash64.Hash(bytes).Reverse().ToArray();
-        return BitConverter.ToInt32(hash);
+        return BitConverter.ToInt32(hash, 0);
     }
     
     public int CompareTo(object? value)
@@ -64,10 +64,19 @@ public partial struct Nuid: IComparable, IComparable<Nuid>, IEquatable<Nuid>
         return other.ToInt32() != _id ? 1 : 0;
     }
 
+#if NET7_0    
     public override bool Equals([NotNullWhen(true)] object? o)
     {
         return o is Nuid other && Equals(other);
     }
+#endif
+    
+#if NETSTANDARD2_0
+    public override bool Equals(object obj)
+    {
+        return base.Equals(obj);
+    }
+#endif
 
     public override int GetHashCode()
     {

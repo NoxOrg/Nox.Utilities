@@ -1,8 +1,5 @@
 using System.Runtime.CompilerServices;
-using Azure.Core;
-using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
-using Nox.Utilities.Configuration;
 using Nox.Utilities.Credentials;
 
 namespace Nox.Utilities.Secrets;
@@ -47,6 +44,7 @@ public class AzureSecretProvider: ISecretProvider
         }
         catch (Exception ex)
         {
+#if NET7_0            
             string InterpolateError()
             {
                 var interpolatedStringHandler = new DefaultInterpolatedStringHandler(42, 2);
@@ -59,6 +57,11 @@ public class AzureSecretProvider: ISecretProvider
             }
 
             var errorMessage = InterpolateError();
+#endif
+#if NETSTANDARD2_0
+            var errorMessage = string.Format("Error loading secrets from vault at '{0}'. ({1})", _vaultUri, ex.Message);
+#endif
+            
             throw new Exception(errorMessage);
         }
         return secrets;

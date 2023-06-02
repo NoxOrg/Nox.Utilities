@@ -22,7 +22,7 @@ public class YamlResolver
     {
         var sourceLines = File.ReadAllLines(_sourceFile!);
         var outputLines = ResolveReferencesInternal(sourceLines.ToList());
-        return string.Join('\n', outputLines.ToArray());
+        return string.Join("\n", outputLines.ToArray());
     }
 
     private List<string> ResolveReferencesInternal(List<string> sourceLines)
@@ -30,7 +30,7 @@ public class YamlResolver
         var outputLines = new List<string>();
         foreach (var sourceLine in sourceLines)
         {
-            if (!sourceLine.TrimStart().StartsWith('#'))
+            if (!sourceLine.TrimStart().StartsWith("#"))
             {
                 var match = _referenceRegex.Match(sourceLine);
                 if (match.Success)
@@ -51,7 +51,7 @@ public class YamlResolver
                         }
                         else
                         {
-                            if (childLine.StartsWith('-'))
+                            if (childLine.StartsWith("-"))
                             {
                                 outputLines.Add(prefixPadding + childLine);
                             }
@@ -74,7 +74,7 @@ public class YamlResolver
             }
         }
 
-        if (outputLines.Any(ol => ol.Contains("$ref:") && !ol.TrimStart().StartsWith('#')))
+        if (outputLines.Any(ol => ol.Contains("$ref:") && !ol.TrimStart().StartsWith("#")))
         {
             outputLines = ResolveReferencesInternal(outputLines);    
         }
