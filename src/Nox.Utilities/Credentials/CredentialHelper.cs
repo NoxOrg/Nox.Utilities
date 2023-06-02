@@ -30,12 +30,12 @@ public static class CredentialHelper
 
             authRecord = await credential.AuthenticateAsync();
 
-            await using var authRecordStream = new FileStream(cacheTokenFile, FileMode.Create, FileAccess.Write);
+            using var authRecordStream = new FileStream(cacheTokenFile, FileMode.Create, FileAccess.Write);
             await authRecord.SerializeAsync(authRecordStream);
         }
         else
         {
-            await using var authRecordStream = new FileStream(cacheTokenFile, FileMode.Open, FileAccess.Read);
+            using var authRecordStream = new FileStream(cacheTokenFile, FileMode.Open, FileAccess.Read);
             authRecord = await AuthenticationRecord.DeserializeAsync(authRecordStream);
 
             credential = new InteractiveBrowserCredential(

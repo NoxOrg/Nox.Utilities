@@ -39,6 +39,6 @@ public readonly struct Identifier
     {
         var bytes = Encoding.UTF8.GetBytes(input);
         var hash = XxHash32.Hash(bytes).Reverse().ToArray();
-        return BitConverter.ToInt32(hash);
+        return BitConverter.ToInt32(hash, 0);
     }
 }
