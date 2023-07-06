@@ -13,13 +13,24 @@ public class UserSecretTests
     {
         //Arrange
         var provider = new UserSecretProvider(Assembly.GetExecutingAssembly()!);
-        var keys = new string[] { key };
+        var keys = new[] { key };
         //Act
         var secrets = provider.GetSecrets(keys);
         //Assert
         Assert.NotNull(secrets);
         Assert.Single(secrets);
         Assert.Equal(expectedResult, secrets.First().Value);
+    }
+    
+    [Fact]
+    public async Task Calling_Async_GetSecrets_ThrowsException()
+    {
+        var provider = new UserSecretProvider(Assembly.GetExecutingAssembly()!);
+        var exception = await Assert.ThrowsAsync<Exception>(async () => _ =
+            await provider.GetSecretsAsync(new[] { "dummy" })
+        );
+
+        Assert.Equal("Synchronous 'GetSecrets' must be used for user secrets.", exception.Message);
     }
 
     
