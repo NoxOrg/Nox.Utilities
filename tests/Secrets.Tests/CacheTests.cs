@@ -2,12 +2,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Nox.Utilities.Identifier;
 using Nox.Utilities.Secrets;
 using Nox.Utilities.Configuration;
+using Xunit;
 
 namespace Secrets.Tests;
 
 public class CacheTests
 {
-    [Test]
+    [Fact]
     public async Task Can_Save_and_retrieve_a_secret()
     {
         var services = new ServiceCollection();
@@ -19,12 +20,12 @@ public class CacheTests
         await store.SaveAsync(key, secret);
         var nuid = new Nuid(key).ToHex();
         var path = Path.Combine(WellKnownPaths.SecretsCachePath, $".{nuid}");
-        Assert.That(File.Exists(path), Is.True);
+        Assert.True(File.Exists(path));
         var loaded = await store.LoadAsync(key, new TimeSpan(0, 0, 1));
-        Assert.That(secret, Is.EqualTo(loaded));
+        Assert.Equal(loaded, secret);
     }
     
-    [Test]
+    [Fact]
     public async Task Must_not_retrieve_an_expired_secret()
     {
         var services = new ServiceCollection();
@@ -36,9 +37,9 @@ public class CacheTests
         await store.SaveAsync(key, secret);
         var nuid = new Nuid(key).ToHex();
         var path = Path.Combine(WellKnownPaths.SecretsCachePath, $".{nuid}");
-        Assert.That(File.Exists(path), Is.True);
+        Assert.True(File.Exists(path));
         Thread.Sleep(1000);
         var loaded = await store.LoadAsync(key, new TimeSpan(0, 0, 1));
-        Assert.That(loaded, Is.Null);
+        Assert.Null(loaded);
     }
 }

@@ -1,11 +1,12 @@
 using Microsoft.Extensions.DependencyInjection;
 using Nox.Utilities.Secrets;
+using Xunit;
 
 namespace Secrets.Tests;
 
 public class AzureTests
 {
-    [Test]
+    [Fact]
     public async Task Can_Retrieve_a_secret()
     {
         var services = new ServiceCollection();
@@ -14,8 +15,8 @@ public class AzureTests
         var secretsProvider = provider.GetRequiredService<ISecretProvider>();
         var keys = new string[] { "test-secret" };
         var secrets = await secretsProvider.GetSecretsAsync(keys);
-        Assert.That(secrets, Is.Not.Null);
-        Assert.That(secrets.Count, Is.EqualTo(1));
-        Assert.That(secrets[0].Value == "This is an Organization Secret");
+        Assert.NotNull(secrets);
+        Assert.Equal(1, secrets.Count);
+        Assert.Equal("This is an Organization Secret", secrets[0].Value);
     }
 }

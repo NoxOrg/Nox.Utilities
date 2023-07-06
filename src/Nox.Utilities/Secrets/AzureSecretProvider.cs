@@ -67,5 +67,8 @@ public class AzureSecretProvider: ISecretProvider
         return secrets;
     }
 
-    
+    public IList<KeyValuePair<string, string>>? GetSecrets(string[] keys)
+    {
+        throw new Exception("Asynchronous 'GetSecretsAsync' method must be used for Azure secrets.");
+    }
 }
