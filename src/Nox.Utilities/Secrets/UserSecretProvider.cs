@@ -11,7 +11,9 @@ public class UserSecretProvider: ISecretProvider
     {
         _executingAssembly = executingAssembly;
     }
-    
+
+    public int Pecedence => 2;
+
     public Task<IList<KeyValuePair<string, string>>?> GetSecretsAsync(string[] keys)
     {
         throw new Exception("Synchronous 'GetSecrets' must be used for user secrets.");

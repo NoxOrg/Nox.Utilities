@@ -19,7 +19,9 @@ public class AzureSecretProvider: ISecretProvider
             throw new Exception("VaultUrl is not a well formed Uri!");
         }
     }
-    
+
+    public int Pecedence => 1;
+
     public async Task<IList<KeyValuePair<string, string>>?> GetSecretsAsync(string[] keys)
     {
         var credential = await CredentialHelper.GetCredentialFromCacheOrBrowser();
