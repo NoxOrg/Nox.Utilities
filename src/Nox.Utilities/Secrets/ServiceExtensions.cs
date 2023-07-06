@@ -1,3 +1,4 @@
+using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Nox.Utilities.Secrets;
@@ -14,6 +15,13 @@ public static class ServiceExtensions
     public static IServiceCollection AddAzureSecretProvider(this IServiceCollection services, string vaultUrl)
     {
         var provider = new AzureSecretProvider(vaultUrl);
+        services.AddSingleton<ISecretProvider>(provider);
+        return services;
+    }
+
+    public static IServiceCollection AddUserSecretProvider(this IServiceCollection services, Assembly executingAssembly)
+    {
+        var provider = new UserSecretProvider(executingAssembly);
         services.AddSingleton<ISecretProvider>(provider);
         return services;
     }
