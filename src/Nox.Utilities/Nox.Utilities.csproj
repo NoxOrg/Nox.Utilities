@@ -6,9 +6,9 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PackageId>Nox.Utilities</PackageId>
-        <AssemblyVersion>1.0.7.0</AssemblyVersion>
-        <FileVersion>1.0.7.0</FileVersion>
-        <PackageVersion>1.0.7</PackageVersion>
+        <AssemblyVersion>1.0.8.0</AssemblyVersion>
+        <FileVersion>1.0.8.0</FileVersion>
+        <PackageVersion>1.0.8</PackageVersion>
         <Authors>Andre Sharpe, Jan Schutte</Authors>
         <Company>The Nox Factory</Company>
         <Copyright>Copyright (c) Andre Sharpe 2022</Copyright>
